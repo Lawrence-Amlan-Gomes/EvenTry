@@ -1,9 +1,15 @@
-import Image from "next/image";
+import Header from "@/components/landing/Header";
+import EventList from "@/components/landing/EventList";
+import { Suspense } from 'react';
+import Loading from "@/components/Loading";
 
-export default function Home() {
+export default function Home({searchParams: {query}}) {
   return (
-    <div className="h-screen w-full bg-slate-300 flex justify-center items-center">
-      <div className="text-5xl text-blue-900 font-bold">Next JS</div>
-    </div>
+    <section className="container">
+      <Header />
+      <Suspense key={query} fallback={<Loading />}>
+        <EventList query={query}/>
+      </Suspense>
+    </section>
   );
 }
