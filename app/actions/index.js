@@ -53,7 +53,7 @@ async function sendEmail(eventId, user) {
       const message = `Dear ${user?.name}, you have been successfully registered for the event, ${event?.name}. Please carry this email and your official id to the venue. We are excited to have you here.`;
       const sent = await resend.emails.send({
         from: "noreply@noreply.tapascript.io",
-        to: user?.email,
+        to: user.email,
         subject: "Successfully Registered for the event!",
         react: EmailTemplate({ message })
       });
